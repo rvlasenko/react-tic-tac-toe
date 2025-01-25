@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import styles from "./Field.module.css"
 
 export default function FieldLayout(props) {
@@ -16,4 +17,9 @@ export default function FieldLayout(props) {
       ))}
     </div>
   )
+}
+
+FieldLayout.propTypes = {
+  handleSquareClick: PropTypes.func.isRequired,
+  field: PropTypes.arrayOf(PropTypes.string).isRequired,
 }

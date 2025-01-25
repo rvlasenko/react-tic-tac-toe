@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import styles from "./Information.module.css"
 
 export default function InformationLayout(props) {
@@ -8,4 +9,8 @@ export default function InformationLayout(props) {
       <span className={styles.status}>{status}</span>
     </div>
   )
+}
+
+InformationLayout.propTypes = {
+  status: PropTypes.string.isRequired,
 }

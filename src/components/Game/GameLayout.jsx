@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import styles from "./Game.module.css"
 import Information from "../Information/Information"
 import Field from "../Field/Field"
@@ -16,4 +17,8 @@ export default function GameLayout(props) {
       </div>
     </div>
   )
+}
+
+GameLayout.propTypes = {
+  handleReset: PropTypes.func.isRequired,
 }

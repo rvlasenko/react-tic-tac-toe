@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import FieldLayout from "./FieldLayout"
 
 export default function Field(props) {
@@ -58,4 +59,14 @@ export default function Field(props) {
   }
 
   return <FieldLayout handleSquareClick={handleSquareClick} field={field} />
+}
+
+Field.propTypes = {
+  currentPlayer: PropTypes.string.isRequired,
+  setCurrentPlayer: PropTypes.func.isRequired,
+  isGameEnded: PropTypes.bool.isRequired,
+  setIsGameEnded: PropTypes.func.isRequired,
+  setIsDraw: PropTypes.func.isRequired,
+  field: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setField: PropTypes.func.isRequired,
 }

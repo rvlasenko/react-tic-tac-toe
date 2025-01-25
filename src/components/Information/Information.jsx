@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import InformationLayout from "./InformationLayout"
 
 export default function Information(props) {
@@ -14,4 +15,10 @@ export default function Information(props) {
   }
 
   return <InformationLayout status={status} />
+}
+
+Information.propTypes = {
+  isDraw: PropTypes.bool.isRequired,
+  isGameEnded: PropTypes.bool.isRequired,
+  currentPlayer: PropTypes.string.isRequired,
 }
