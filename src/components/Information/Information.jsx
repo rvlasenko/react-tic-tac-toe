@@ -4,14 +4,14 @@ import InformationLayout from "./InformationLayout"
 export default function Information(props) {
   const { isDraw, isGameEnded, currentPlayer } = props
 
-  let status = isDraw && "Ничья"
+  let status = isDraw && "Draw"
 
   if (!isDraw && isGameEnded) {
-    status = `Победа: ${currentPlayer}`
+    status = `Winner: ${currentPlayer}`
   }
 
   if (!isDraw && !isGameEnded) {
-    status = `Ходит: ${currentPlayer}`
+    status = `Next player: ${currentPlayer}`
   }
 
   return <InformationLayout status={status} />
