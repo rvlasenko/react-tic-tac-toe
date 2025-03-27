@@ -4,14 +4,14 @@ import Information from "../Information/Information"
 import Field from "../Field/Field"
 
 export default function GameLayout(props) {
-  const { handleReset } = props
+  const { handleRestart } = props
 
   return (
     <div className={styles.game}>
-      <Information {...props} />
-      <Field {...props} />
+      <Information />
+      <Field />
       <div className={styles.footerBar}>
-        <button className={styles.resetBtn} onClick={() => handleReset()}>
+        <button className={styles.resetBtn} onClick={handleRestart}>
           Reset
         </button>
       </div>
@@ -20,5 +20,5 @@ export default function GameLayout(props) {
 }
 
 GameLayout.propTypes = {
-  handleReset: PropTypes.func.isRequired,
+  handleRestart: PropTypes.func.isRequired,
 }

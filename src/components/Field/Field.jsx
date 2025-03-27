@@ -1,16 +1,15 @@
-import PropTypes from "prop-types"
+import { useReduxState, useDispatch } from "../../redux-manager"
+import {
+  setCurrentPlayer,
+  setField,
+  setIsDraw,
+  setIsGameEnded,
+} from "../../actions"
 import FieldLayout from "./FieldLayout"
 
-export default function Field(props) {
-  const {
-    currentPlayer,
-    setCurrentPlayer,
-    isGameEnded,
-    setIsGameEnded,
-    setIsDraw,
-    field,
-    setField,
-  } = props
+export default function Field() {
+  const dispatch = useDispatch()
+  const { field, isGameEnded, currentPlayer } = useReduxState()
 
   const handleSquareClick = (index) => {
     if (field[index] || isGameEnded) {
@@ -19,21 +18,21 @@ export default function Field(props) {
 
     const newField = [...field]
     newField[index] = currentPlayer
-    setField(newField)
+    dispatch(setField(newField))
 
     const winner = calculateWinner(newField)
     if (winner) {
-      setIsGameEnded(true)
+      dispatch(setIsGameEnded(true))
       return
     }
 
     if (newField.every((cell) => cell)) {
-      setIsDraw(true)
-      setIsGameEnded(true)
+      dispatch(setIsDraw(true))
+      dispatch(setIsGameEnded(true))
       return
     }
 
-    setCurrentPlayer(currentPlayer === "X" ? "O" : "X")
+    dispatch(setCurrentPlayer(currentPlayer === "X" ? "O" : "X"))
   }
 
   const calculateWinner = (field) => {
@@ -59,14 +58,4 @@ export default function Field(props) {
   }
 
   return <FieldLayout handleSquareClick={handleSquareClick} field={field} />
-}
-
-Field.propTypes = {
-  currentPlayer: PropTypes.string.isRequired,
-  setCurrentPlayer: PropTypes.func.isRequired,
-  isGameEnded: PropTypes.bool.isRequired,
-  setIsGameEnded: PropTypes.func.isRequired,
-  setIsDraw: PropTypes.func.isRequired,
-  field: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setField: PropTypes.func.isRequired,
 }
