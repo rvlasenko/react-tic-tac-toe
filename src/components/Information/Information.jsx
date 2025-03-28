@@ -1,8 +1,8 @@
+import { useSelector } from "react-redux"
 import InformationLayout from "./InformationLayout"
-import { useReduxState } from "../../redux-manager"
 
 export default function Information() {
-  const { isDraw, isGameEnded, currentPlayer } = useReduxState()
+  const { isDraw, isGameEnded, currentPlayer } = useSelector((state) => state)
 
   let status = isDraw && "Draw"
 

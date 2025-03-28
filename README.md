@@ -1,70 +1,70 @@
 # React Tic-Tac-Toe
 
-A classic Tic-Tac-Toe game built with React, featuring a custom Redux implementation for state management.
+A classic Tic-Tac-Toe game built with React and Redux for state management.
 
 <img src="public/screenshot.png" alt="Tic Tac Toe Screenshot" width="500"/>
 
-## Project Overview
+## Features
 
-This project implements the classic Tic-Tac-Toe game using React and a lightweight custom Redux implementation. The application features a responsive design with a dark theme, allowing players to take turns placing X and O marks on a 3×3 grid.
+- Play the classic Tic-Tac-Toe game with alternating X and O turns
+- Automatic win detection with clear winner indication
+- Draw state detection when the board is full
+- Responsive design with a clean dark theme interface
+- Game reset functionality
+
+## Technology Stack
+
+- [React 18](https://react.dev/)
+- [Redux](https://redux.js.org/) for state management
+- [Vite](https://vitejs.dev/) for fast development and build experience
+- CSS Modules for component-scoped styling
+- ESLint for code quality
 
 ## Architecture
 
-### Custom Redux Implementation
+The project follows a clean component architecture with separation of concerns:
 
-The project uses a custom Redux implementation ([`redux-manager.js`](src/redux-manager.js)) instead of react-redux, providing:
+### Components
 
-- `useReduxState` - Custom hook to access the Redux store state
-- `useDispatch` - Custom hook to dispatch actions
-- `ReduxRenderer` - Component that initializes the Redux context
+- [`Game`](src/components/Game/Game.jsx) - Main container component with reset functionality
+- [`Field`](src/components/Field/Field.jsx) - Handles game board, moves, and win logic
+- [`Information`](src/components/Information/Information.jsx) - Displays game status (next player, winner, draw)
 
-### Application Structure
+### State Management
 
-The application follows a structured component hierarchy with separation of concerns:
+- Redux store defined in [`store.js`](src/store.js)
+- Action types and creators in [`actions.js`](src/actions.js)
+- Game state reducer in [`reducer.js`](src/reducer.js)
 
-#### Core Components
+### Layout Pattern
 
-- [`Game`](src/components/Game/Game.jsx) - Controls game restart functionality
-- [`Field`](src/components/Field/Field.jsx) - Handles game logic, winner calculation, and player interactions
-- [`Information`](src/components/Information/Information.jsx) - Displays current game status
+Each component is split into logical and presentational parts:
 
-#### Presentational Components
+- Logic components (`Game.jsx`, `Field.jsx`, `Information.jsx`)
+- Layout components (`GameLayout.jsx`, `FieldLayout.jsx`, `InformationLayout.jsx`)
 
-Each core component has a corresponding layout component:
+## Getting Started
 
-- [`GameLayout`](src/components/Game/GameLayout.jsx)
-- [`FieldLayout`](src/components/Field/FieldLayout.jsx)
-- [`InformationLayout`](src/components/Information/InformationLayout.jsx)
+### Prerequisites
 
-#### State Management
+- Node.js (v16+)
+- npm or yarn
 
-- Redux Store ([`store.js`](src/store.js))
-- Action Types and Creators ([`actions.js`](src/actions.js))
-- Reducer ([`reducer.js`](src/reducer.js))
+### Installation
 
-## Features
+```bash
+# Clone the repository
+git clone <repository-url>
 
-- Turn-based gameplay between X and O players
-- Automatic detection of winning combinations
-- Game state indicators (next player, winner, draw)
-- Game reset functionality
-- Responsive design with hover effects
+# Install dependencies
+npm install
 
-## Development
+# Start development server
+npm run dev
 
-This project is built with Vite for fast development and optimized production builds.
+# Build the app
+npm run build
 
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint to check code quality
-
-## Technologies
-
-- React 18
-- Redux (custom implementation)
-- Vite
-- CSS Modules
-- ESLint
+# Preview production build
+npm run preview
+```

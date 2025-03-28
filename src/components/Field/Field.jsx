@@ -1,4 +1,4 @@
-import { useReduxState, useDispatch } from "../../redux-manager"
+import { useDispatch, useSelector } from "react-redux"
 import {
   setCurrentPlayer,
   setField,
@@ -9,7 +9,7 @@ import FieldLayout from "./FieldLayout"
 
 export default function Field() {
   const dispatch = useDispatch()
-  const { field, isGameEnded, currentPlayer } = useReduxState()
+  const { field, isGameEnded, currentPlayer } = useSelector((state) => state)
 
   const handleSquareClick = (index) => {
     if (field[index] || isGameEnded) {

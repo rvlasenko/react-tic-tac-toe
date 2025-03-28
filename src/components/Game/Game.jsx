@@ -1,5 +1,5 @@
 import { restartGame } from "../../actions"
-import { useDispatch } from "../../redux-manager"
+import { useDispatch } from "react-redux"
 import GameLayout from "./GameLayout"
 
 export default function Game() {
